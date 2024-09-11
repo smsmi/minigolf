@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwrln3wij5bci"]
+
+[ext_resource type="Texture2D" uid="uid://dhrmmmo10jdih" path="res://assets/gfx/flag.png" id="1_i0mpk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_umb8b"]
+radius = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owrca"]
+atlas = ExtResource("1_i0mpk")
+region = Rect2(0, 0, 12, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk4rs"]
+atlas = ExtResource("1_i0mpk")
+region = Rect2(12, 0, 12, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx4uv"]
+atlas = ExtResource("1_i0mpk")
+region = Rect2(24, 0, 12, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0y1k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owrca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk4rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx4uv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Goal" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_umb8b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -18)
+sprite_frames = SubResource("SpriteFrames_n0y1k")
+autoplay = "default"
+centered = false

@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwtylkstkvqqs"]
+
+[sub_resource type="Animation" id="Animation_g0hnm"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0784314, 0.0941176, 0.180392, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xav4l"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0784314, 0.0941176, 0.180392, 0), Color(0.0784314, 0.0941176, 0.180392, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pfqcj"]
+_data = {
+"Fade": SubResource("Animation_xav4l"),
+"RESET": SubResource("Animation_g0hnm")
+}
+
+[node name="Transition" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.0784314, 0.0941176, 0.180392, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pfqcj")
+}

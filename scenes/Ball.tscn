@@ -1,0 +1,32 @@
+[gd_scene load_steps=10 format=3 uid="uid://bps6nb31c50n7"]
+
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_yu6e8"]
+[ext_resource type="Texture2D" uid="uid://l641tidwg0m" path="res://assets/gfx/ball.png" id="2_gg1nu"]
+[ext_resource type="AudioStream" uid="uid://blsjwd242mnm4" path="res://assets/sfx/blip1.wav" id="3_e67ai"]
+[ext_resource type="AudioStream" uid="uid://b4jn04msw3l46" path="res://assets/sfx/blip2.wav" id="4_t34ry"]
+[ext_resource type="AudioStream" uid="uid://d3gkfdjulb2vo" path="res://assets/sfx/blip3.wav" id="5_s3g67"]
+[ext_resource type="AudioStream" uid="uid://crs0amn8bii2f" path="res://assets/sfx/blip4.wav" id="6_ljt4i"]
+[ext_resource type="AudioStream" uid="uid://dt1dvt126ewc6" path="res://assets/sfx/blip5.wav" id="7_vrde5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mr0jh"]
+radius = 2.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7fre6"]
+streams_count = 5
+stream_0/stream = ExtResource("3_e67ai")
+stream_1/stream = ExtResource("4_t34ry")
+stream_2/stream = ExtResource("5_s3g67")
+stream_3/stream = ExtResource("6_ljt4i")
+stream_4/stream = ExtResource("7_vrde5")
+
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_yu6e8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mr0jh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gg1nu")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7fre6")
